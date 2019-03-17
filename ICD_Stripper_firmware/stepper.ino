@@ -4,7 +4,7 @@ boolean stepper_pos_mode  = false;
 void set_RPM(int RPM) {
   float pulse_per_minute = float(RPM) * PULSE_PER_REV;
   float time_micros = ((1000000.0 * 60.0) / pulse_per_minute) / 2.0;
-  if (RPM > 0 && RPM < 100)Timer1.initialize(time_micros);
+  if (RPM > 0 && RPM <= 100)Timer1.initialize(time_micros);
   else if(RPM == 0)Timer1.stop();
   //Serial.println(pulse_per_minute);
   //Serial.println(time_micros);
