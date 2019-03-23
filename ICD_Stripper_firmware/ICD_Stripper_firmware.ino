@@ -5,6 +5,8 @@
 #include <TimeLib.h>
 
 /*Stepper setup*/
+#define MAX_RPM 150
+#define MIN_RPM 0
 #define PUL_POSITIVE_PIN 23
 #define PUL_NEGATIVE_PIN 25
 

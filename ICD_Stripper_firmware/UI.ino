@@ -618,7 +618,11 @@ void setting_rpm() {
   lcd.setCursor(0, 0);
   lcd.print("Setting Speed");
   lcd.setCursor(0, 1);
-  lcd.print("Enter 0-100 RPM");
+  lcd.print("Enter ");
+  lcd.print(MIN_RPM);
+  lcd.print("-");
+  lcd.print(MAX_RPM);
+  lcd.print(" RPM");
   lcd.setCursor(0, 3);
   lcd.print("[*]Cancel [#]Confirm");
   lcd.setCursor(0, 2);
@@ -647,7 +651,7 @@ void setting_rpm() {
     }
     else if (key == '#') {
       int num = value.toInt();
-      if (num > 100) {
+      if (num > MAX_RPM) {
         value = "";
         lcd.setCursor(0, 2);
         lcd.print(">   ");
@@ -755,7 +759,7 @@ void load_recent_value(byte block) {
     EEPROM.write(RECENT_MODE_ADDR + 6 * block, 0);
     recent_mode = EEPROM.read(RECENT_MODE_ADDR + 6 * block);
   }
-  if (recent_rpm > 100 || recent_rpm < 1 ) {
+  if (recent_rpm > MAX_RPM || recent_rpm < MIN_RPM ) {
     EEPROM.write(RECENT_RPM_ADDR + 6 * block, 1);
     recent_rpm = EEPROM.read(RECENT_RPM_ADDR + 6 * block);
   }
